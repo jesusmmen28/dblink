@@ -20,9 +20,9 @@ const newLinkController = async (req, res, next) => {
    try {
     const { link, titulo, descripcion } = req.body;
 
-    if (!titulo || !descripcion || !link || link.length > 280) {
+    if (!link || !titulo || !descripcion || link.length > 800) {
       throw generateError(
-        'El link debe existir y ser menor de 280 caracteres',
+        'El link debe existir y ser menor de 800 caracteres',
         400
       );
     }
@@ -72,7 +72,7 @@ const getSingleLinkController = async (req, res, next) => {
   
       res.send({
         status: 'ok',
-        message: `El link con id: ${id} fue borrado satisfactoriamente`,
+        message: `El link con id: ${id} fue borrado`,
       });
     } catch (error) {
       next(error);

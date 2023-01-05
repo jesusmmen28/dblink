@@ -22,20 +22,22 @@ const { authUser } = require('./middlewares/auth');
 
 const app = express();
 
+app.use(fileUpload())
 app.use(express.json());
 app.use(morgan('dev'));
+app.use('/uploads', express.static('./uploads'));
 
 //Rutas de usuario
-app.post('/user', anonymousUsers /*newUserController*/);//nos permite registrar
-app.get('/user/:id', getAnonymousUsersController /*getUserController*/);//nos da informacion de un usuario
+app.post('/user', anonymousUsers);//nos permite registrar
+app.get('/user/:id', getAnonymousUsersController);//nos da informacion de un usuario
 app.post('/login', loginController); //nos permite logearnos
 //app.put('/user/:id', authUser, editUser )
 
 //Rutas de link
-app.post('/', authUser, newLinkController /*newTweetController*/); //creo los link
-app.get('/', getLinksController /*getTweetsController*/); //listo los link
-app.get('/link/:id', getSingleLinkController /*getSingleTweetController*/); //Devuelvo un link
-app.delete('/link/:id', authUser, deleteLinkController /*deleteTweetController*/); //borro un link
+app.post('/', authUser, newLinkController); //creo los link
+app.get('/', getLinksController); //listo los link
+app.get('/link/:id', getSingleLinkController); //Devuelvo un link
+app.delete('/link/:id', authUser, deleteLinkController); //borro un link
 
 
 //ruta de votos

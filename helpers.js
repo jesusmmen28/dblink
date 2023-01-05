@@ -1,4 +1,4 @@
-//const fs = require('fs/promises');
+const fs = require('fs/promises');
 
 const generateError = (message, status) => {
   const error = new Error(message);
@@ -6,7 +6,7 @@ const generateError = (message, status) => {
   return error;
 };
 
-/*
+
 const createPathIfNotExists = async (path) => {
   try {
     await fs.access(path);
@@ -15,7 +15,8 @@ const createPathIfNotExists = async (path) => {
   }
 };
 
-*/
+
 module.exports ={
   generateError,
+  createPathIfNotExists,
 };

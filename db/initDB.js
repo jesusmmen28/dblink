@@ -23,8 +23,8 @@ async function main() {
         name VARCHAR (100) NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
         password VARCHAR(100) NOT NULL,
-        photos VARCHAR(100),
         biography VARCHAR(300),
+        photo VARCHAR(100),
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
       );
     `);
@@ -33,7 +33,7 @@ async function main() {
     CREATE TABLE links (
       id INTEGER PRIMARY KEY AUTO_INCREMENT,
       user_id INTEGER NOT NULL,
-      link VARCHAR(280) NOT NULL,
+      link VARCHAR(800) NOT NULL,
       titulo VARCHAR(100),
       descripcion VARCHAR(300),
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
