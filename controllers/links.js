@@ -1,5 +1,6 @@
 const { createLink, getAllLinks, getLinkById, deleteLinkById } = require("../db/links");
 const { generateError } = require('../helpers');
+const Joi = require('@hapi/joi');
 
 
 // Listar links/get link
@@ -56,10 +57,10 @@ const getSingleLinkController = async (req, res, next) => {
       //req.userId
       const { id } = req.params;
   
-      // Conseguir la información del tweet que quiero borrar
+      // Conseguir la información del link que quiero borrar
       const link = await getLinkById(id);
   
-      // Comprobar que el usuario del token es el mismo que creó el tweet
+      // Comprobar que el usuario del token es el mismo que creó el link
       if (req.userId !== link.user_id) {
         throw generateError(
           'Estás intentando borrar un link que no has creado',

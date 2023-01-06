@@ -18,6 +18,7 @@ const {
 } = require('./controllers/links');
 
 const { authUser } = require('./middlewares/auth');
+const { VotesController, getVotesController } = require('./controllers/votes');
 
 
 const app = express();
@@ -41,8 +42,8 @@ app.delete('/link/:id', authUser, deleteLinkController); //borro un link
 
 
 //ruta de votos
-//app.post('/link/:id/votes', authUser, existLink, votesLink);
-//app.get('/link/:id/votes', existLink, getLinkVotes);
+app.post('/votes/:id', authUser, VotesController);
+app.get('/votes', getVotesController);
 
 
 
@@ -67,5 +68,5 @@ app.use((error, req, res, next) => {
 
 // Lanzamos el servidor
 app.listen(4000, () => {
-  console.log('Servidor funcionando! 👻');
+  console.log('Servidor funcionando!');
 });

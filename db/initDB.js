@@ -41,19 +41,18 @@ async function main() {
       );
   `);
 
-  /*await connection.query(`
+  await connection.query(`
       CREATE TABLE votes (
         id INTEGER PRIMARY KEY AUTO_INCREMENT,
-        link_id INTEGER NOT NULL,
-        vote TINYINT NOT NULL,
-        date DATETIME NOT NULL,
-        user_id INTEGER NOT NULL,
-        lastUpdate DATETIME NOT NULL,
+        user_id INTEGER,
+        link_id INTEGER,
+        vote TINYINT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id),
-        FOREIGN KEY (link_id) REFERENCES link(id)
+        FOREIGN KEY (link_id) REFERENCES links(id)
       )
     `);
-*/
+
 
   } catch (error) {
     console.error(error);

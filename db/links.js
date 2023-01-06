@@ -60,7 +60,7 @@ const getAllLinks = async () => {
     }
   };
 
-const createLink = async (userId, link, titulo, descripcion) => {
+const createLink = async (user_id, link, titulo, descripcion) => {
     let connection;
   
     try {
@@ -71,7 +71,7 @@ const createLink = async (userId, link, titulo, descripcion) => {
         INSERT INTO links (user_id, link, titulo, descripcion)
         VALUES(?, ?, ?, ?)
       `,
-        [userId, link, titulo, descripcion]
+        [user_id, link, titulo, descripcion]
       );
   
       return result.insertId;

@@ -5,11 +5,12 @@ const { createUser, getUserById, getUserByEmail } = require('../db/users');
 const path = require('path');
 const sharp = require('sharp');
 const {nanoid} = require('nanoid');
+const Joi = require('@hapi/joi');
 
 const anonymousUsers = async (req, res, next) => {
   try {
     const { name, email, password, biography } = req.body;
-
+    const schema = Joi.string().email();
     // Esto debería ser sustituido por joi
     if (!name || !email || !password || !biography) {
       throw generateError(
